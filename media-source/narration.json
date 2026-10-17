@@ -1,0 +1,15 @@
+[
+  {"scene": 0, "spoken": "An agent can fail, roll back, and repeat the same mistake.", "caption": "An agent can fail, roll back, and repeat the same mistake."},
+  {"scene": 0, "spoken": "Belief Weaver turns recovery into cumulative reasoning.", "caption": "BeliefWeaver turns recovery into cumulative reasoning."},
+  {"scene": 1, "spoken": "It keeps a relational belief state, linking repair hypotheses, attempts, observations, and checkpoints.", "caption": "It keeps a relational belief state: repair hypotheses, attempts, observations, and checkpoints."},
+  {"scene": 1, "spoken": "That evidence persists across attempts, including rollbacks.", "caption": "That evidence persists across attempts, including rollbacks."},
+  {"scene": 2, "spoken": "An implicit world model evaluates repair hypotheses.", "caption": "An implicit world model evaluates repair hypotheses."},
+  {"scene": 2, "spoken": "A diagnostic gate controls execution.", "caption": "A diagnostic gate controls execution."},
+  {"scene": 2, "spoken": "New evidence updates belief, so the next attempt starts better informed.", "caption": "New evidence updates belief, so the next attempt starts better informed."},
+  {"scene": 3, "spoken": "The paper also distills four recurring roles into a nine billion parameter student.", "caption": "The paper distills four recurring roles into a 9B student."},
+  {"scene": 3, "spoken": "It uses supervised fine tuning, followed by on policy distillation.", "caption": "Supervised fine-tuning is followed by on-policy distillation."},
+  {"scene": 4, "spoken": "Across one hundred thirteen long horizon tasks, the paper reports a final score of forty eight point six percent for Terminus Two.", "caption": "On 113 tasks: Terminus-2 reaches a 48.6% final score."},
+  {"scene": 4, "spoken": "Fifty three point seven for Belief Weaver, and fifty eight point four for S F T plus O P D.", "caption": "BeliefWeaver reaches 53.7%; SFT + OPD reaches 58.4%."},
+  {"scene": 5, "spoken": "Recovery improves when evidence survives failure.", "caption": "Recovery improves when evidence survives failure."},
+  {"scene": 5, "spoken": "Explore Belief Weaver, and read the paper.", "caption": "Explore BeliefWeaver and read the paper."}
+]

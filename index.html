@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f7f7f2">
+  <meta name="description" content="BeliefWeaver: failure recovery for long-horizon agents through persistent evidence, belief updates, and implicit world modeling.">
+  <meta property="og:title" content="BeliefWeaver — Learn from every attempt">
+  <meta property="og:description" content="Failure Recovery via Belief Updates and World Modeling for Long-Horizon Agents. Paper, method, results, and a one-minute overview.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wuxiyang1996.github.io/beliefweaver_page/">
+  <meta property="og:image" content="https://wuxiyang1996.github.io/beliefweaver_page/assets/video-poster.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://wuxiyang1996.github.io/beliefweaver_page/">
+  <title>BeliefWeaver | Failure Recovery for Long-Horizon Agents</title>
+  <link rel="icon" type="image/svg+xml" href="assets/mark.svg">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <a class="wordmark" href="#top" aria-label="BeliefWeaver home"><img src="assets/mark.svg" alt="" width="28" height="28">BeliefWeaver</a>
+    <nav aria-label="Main navigation"><a href="#overview">Overview</a><a href="#method">Method</a><a href="#results">Results</a><a href="#resources">Resources <span aria-hidden="true">↗</span></a></nav>
+  </header>
+  <main id="main">
+    <section class="hero section-shell" id="top" aria-labelledby="paper-title">
+      <div class="eyebrow"><span class="status-dot"></span> LONG-HORIZON AGENTS · ARXIV 2026</div>
+      <p class="hero-brand">Belief<span>Weaver</span></p>
+      <h1 id="paper-title">Failure Recovery via Belief Updates<br class="desktop-break"> and World Modeling<br class="desktop-break"> for Long-Horizon Agents</h1>
+      <div class="authors"><span>Xiyang Wu<sup>*1</sup></span><span>Zhichao Liu<sup>*1</sup></span><span>Shengxin Zhang<sup>*2</sup></span><span>Zongxia Li<sup>1</sup></span><span>Ming Li<sup>1</sup></span><span>Tianyi Zhou<sup>3</sup></span><span>Dinesh Manocha<sup>1</sup></span></div>
+      <p class="affiliations"><span><sup>1</sup>University of Maryland</span><span><sup>2</sup>Google</span><span><sup>3</sup>MBZUAI</span></p>
+      <p class="equal-note">* Equal contribution</p>
+      <div class="resource-links">
+        <a class="button primary" href="https://arxiv.org/pdf/2610.18082" target="_blank" rel="noopener">Read the paper <span aria-hidden="true">↗</span></a>
+        <a class="button" href="https://arxiv.org/abs/2610.18082" target="_blank" rel="noopener">arXiv</a>
+        <a class="button" href="https://github.com/wuxiyang1996/beliefweaver" target="_blank" rel="noopener">Code <span class="button-note">Private</span><span aria-hidden="true">↗</span></a>
+        <a class="button" href="#video"><span class="play-icon" aria-hidden="true">▶</span> Watch overview</a>
+      </div>
+      <div class="hero-visual" aria-label="Conceptual illustration: failed attempts contribute evidence to a persistent belief state that guides the next repair.">
+        <div class="visual-caption"><span class="eyebrow">THE IDEA</span><p>A failed attempt should change<br> <strong>what comes next.</strong></p></div>
+        <svg class="weave" viewBox="0 0 720 266" role="img" aria-labelledby="weave-title">
+          <title id="weave-title">Evidence from earlier attempts is retained, connected, and used to choose the next repair.</title>
+          <defs><linearGradient id="path-gradient" x1="0" x2="1"><stop offset="0" stop-color="#9ea5ad"/><stop offset=".55" stop-color="#5b5fc7"/><stop offset="1" stop-color="#087e8b"/></linearGradient></defs>
+          <g fill="none" stroke="url(#path-gradient)" stroke-width="2">
+            <path class="weave-thread" d="M48 61 C185 61 195 201 326 133 S450 61 665 61"/>
+            <path class="weave-thread" d="M48 133 C155 133 185 31 326 133 S466 205 665 133"/>
+            <path class="weave-thread" d="M48 205 C205 205 200 185 326 133 S455 17 665 133"/>
+            <path d="M326 133 C430 133 432 205 540 205" stroke-dasharray="5 6" opacity=".45"/>
+          </g>
+          <g font-family="Arial, sans-serif" font-size="12" fill="#64717a">
+            <text x="25" y="32">ATTEMPTS</text><text x="259" y="32">PERSISTENT BELIEF</text><text x="558" y="32">NEXT FRONTIER</text>
+            <text x="82" y="66">Feedback</text><text x="82" y="138">Evidence</text><text x="82" y="210">Checkpoint</text>
+          </g>
+          <g fill="#f7f7f2" stroke="#9ca7b0" stroke-width="2"><circle cx="48" cy="61" r="9"/><circle cx="48" cy="133" r="9"/><circle cx="48" cy="205" r="9"/></g>
+          <circle cx="326" cy="133" r="49" fill="#eeedf8" stroke="#d5d3ef"/>
+          <g stroke="#5b5fc7" stroke-width="2" fill="#fff"><path d="m308 115 37 7-27 31-10-38 10 38 27-31" fill="none"/><circle cx="308" cy="115" r="7"/><circle cx="345" cy="122" r="7"/><circle cx="318" cy="153" r="7"/></g>
+          <g fill="#087e8b"><circle cx="665" cy="133" r="18"/><path d="m658 133 5 5 9-11" stroke="#fff" stroke-width="2" fill="none"/></g>
+          <circle cx="665" cy="61" r="9" fill="#f7f7f2" stroke="#b6bec1" stroke-width="2"/>
+          <circle cx="540" cy="205" r="9" fill="#f7f7f2" stroke="#b6bec1" stroke-width="2"/>
+          <text x="582" y="177" fill="#087e8b" font-family="Arial, sans-serif" font-size="12">EVIDENCE-SUPPORTED</text>
+          <text x="278" y="212" fill="#5b5fc7" font-family="Arial, sans-serif" font-size="12">Retained across rollback</text>
+        </svg>
+      </div>
+      <div class="headline-stats" aria-label="Paper highlights">
+        <div><span class="stat-number">+5.1<span>pp</span></span><p>Teacher final score<br> <span>vs. native Terminus-2</span></p></div>
+        <div><span class="stat-number">+9.8<span>pp</span></span><p>Distilled 9B final score<br> <span>SFT + OPD vs. native Terminus-2</span></p></div>
+        <div><span class="stat-number">54.8<span>%</span></span><p>Lower teacher API cost<br> <span>SFT + OPD vs. matched teacher</span></p></div>
+      </div>
+      <p class="source-note">Paper-reported results across three terminal benchmarks. <a href="#results">Metrics and comparison details ↓</a></p>
+    </section>
+
+    <section class="overview-section" id="overview">
+      <div class="section-shell overview-grid">
+        <div><p class="eyebrow">01 / OVERVIEW</p><h2>Recovery that<br> builds on evidence.</h2></div>
+        <div class="prose"><p>An agent can fail because of a decision made many steps earlier. Trying again is useful only if the next attempt benefits from what the last one revealed.</p><p>BeliefWeaver maintains a <strong>persistent relational belief state</strong> over repair hypotheses, attempts, observations, and checkpoints. New evidence changes the priorities of related hypotheses—even across rollback. An implicit world model reasons about possible repairs and expected progress, while a separate diagnostic gate determines which repairs are ready to execute.</p><p>Recurring reasoning roles can then be distilled into a <strong>9B student</strong> through supervised fine-tuning and on-policy distillation.</p></div>
+      </div>
+    </section>
+
+    <section class="section-shell video-section" id="video">
+      <div class="section-heading"><div><p class="eyebrow">THE PAPER IN A MINUTE</p><h2>From failure to a better next step.</h2></div><a class="text-link" href="assets/beliefweaver-short.mp4" download>Download video <span aria-hidden="true">↓</span></a></div>
+      <div class="video-frame"><video id="overview-video" controls preload="metadata" playsinline poster="assets/video-poster.jpg" aria-label="BeliefWeaver research overview with English narration and captions"><source src="assets/beliefweaver-short.mp4" type="video/mp4"><track kind="captions" src="assets/beliefweaver-short.vtt" srclang="en" label="English">Your browser does not support embedded video. <a href="assets/beliefweaver-short.mp4">Download the MP4.</a></video></div>
+      <p class="media-note">Research overview · English synthetic narration · On-screen captions · Diagrams illustrate the method, not a live agent run.</p>
+      <details class="transcript"><summary>Read the video transcript</summary><div id="video-transcript"><p>The transcript is also available as <a href="assets/beliefweaver-short.vtt" download>English captions</a>.</p></div></details>
+    </section>
+
+    <section class="method-section" id="method">
+      <div class="section-shell">
+        <div class="section-heading"><div><p class="eyebrow">02 / HOW IT WORKS</p><h2>Remember. Reconsider. Recover.</h2></div><p class="heading-note">A belief score ranks a repair.<br> Diagnostic evidence gates its execution.</p></div>
+        <div class="method-explorer">
+          <div class="method-steps" aria-label="Explore the recovery loop">
+            <button class="method-step active" data-step="0" aria-pressed="true"><span>01</span><div><strong>Propose &amp; probe</strong><small>Turn a failure into testable hypotheses.</small></div><span class="step-arrow" aria-hidden="true">↗</span></button>
+            <button class="method-step" data-step="1" aria-pressed="false"><span>02</span><div><strong>Update &amp; rank</strong><small>Let evidence reshape related priorities.</small></div><span class="step-arrow" aria-hidden="true">↗</span></button>
+            <button class="method-step" data-step="2" aria-pressed="false"><span>03</span><div><strong>Gate &amp; execute</strong><small>Act on a supported, unresolved frontier.</small></div><span class="step-arrow" aria-hidden="true">↗</span></button>
+            <button class="method-step" data-step="3" aria-pressed="false"><span>04</span><div><strong>Verify &amp; retain</strong><small>Keep useful progress and all evidence.</small></div><span class="step-arrow" aria-hidden="true">↗</span></button>
+          </div>
+          <div class="method-detail" data-stage="0">
+            <div class="diagram-label"><span class="status-dot"></span> PERSISTENT EXPLORATION STATE</div>
+            <div class="loop-diagram" aria-hidden="true">
+              <div class="diagram-checkpoint">Retained checkpoint</div><div class="diagram-stem"></div>
+              <div class="frontiers"><div class="frontier frontier-a"><span>Repair A</span><small>Earlier attempt</small></div><div class="frontier frontier-b"><span>Repair B</span><small>Related hypothesis</small></div><div class="frontier frontier-c"><span>Repair C</span><small>Needs evidence</small></div></div>
+              <div class="relation-line"><span>shared mechanism / refinement</span></div>
+              <div class="evidence-flow"><span class="evidence-dot"></span>Observations update related beliefs</div>
+              <div class="diagram-gate">Diagnostic evidence gate <span>→</span> Execution</div>
+              <div class="diagram-return">↶ &nbsp; Feedback persists through rollback</div>
+            </div>
+            <div class="step-copy" aria-live="polite"><span id="step-kicker">01 / PROPOSE &amp; PROBE</span><h3 id="step-title">Make the failure testable.</h3><p id="step-description">The implicit world model proposes repair hypotheses and diagnostic probes, estimates potential progress, and identifies relations between candidate repairs.</p></div>
+          </div>
+        </div>
+        <figure class="paper-figure"><a href="assets/beliefweaver-overview.png" target="_blank" rel="noopener" aria-label="Open full-size paper method figure"><img src="assets/beliefweaver-overview.png" alt="Paper Figure 1: the implicit world model proposes repairs; a persistent graph links checkpoints, frontiers, attempts and observations; belief updates rank hypotheses and an evidence gate controls execution." width="1671" height="1112" loading="lazy"></a><figcaption><span>THE COMPLETE FRAMEWORK</span> Figure 1 from the <a href="https://arxiv.org/html/2610.18082v1#S4.F1" target="_blank" rel="noopener">paper</a>, reproduced under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>. Click to view full size.</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="section-shell results-section" id="results">
+      <div class="section-heading"><div><p class="eyebrow">03 / MAIN RESULTS</p><h2>Better recovery, across benchmarks.</h2></div><a class="text-link" href="https://arxiv.org/html/2610.18082v1#S5.T1" target="_blank" rel="noopener">Paper · Table 1 ↗</a></div>
+      <p class="section-intro">Compare the native agent, the full teacher framework, and the distilled students. Final score measures test-pass fraction or graded reward.</p>
+      <div class="results-panel">
+        <div class="chart-toolbar"><h3>Final score <span>(%, higher is better)</span></h3><div class="benchmark-switch" role="group" aria-label="Select benchmark"><button data-benchmark="overall" aria-pressed="true" class="active">Overall</button><button data-benchmark="tb2" aria-pressed="false">TB2</button><button data-benchmark="tb3" aria-pressed="false">TB3</button><button data-benchmark="lhtb" aria-pressed="false">LHTB</button></div></div>
+        <div class="chart-legend"><span><i class="swatch baseline"></i>Baselines</span><span><i class="swatch teacher"></i>Full teacher</span><span><i class="swatch student"></i>Distilled students</span></div>
+        <div id="result-chart" class="result-chart" aria-live="polite"></div>
+        <div class="chart-axis" aria-hidden="true"><span>0</span><span>25</span><span>50</span><span>75</span><span>100</span></div>
+        <p class="chart-note" id="benchmark-note">Aggregate final score across the three benchmark suites.</p>
+      </div>
+      <p class="source-note left">Values are means ± 95% bootstrap confidence-interval half-widths. All results are from the paper; the visualization does not report new runs.</p>
+      <details class="result-details"><summary>View the full results, including exploration efficiency</summary><div class="table-scroll" tabindex="0" role="region" aria-label="Full paper results, scroll horizontally"><table><caption>Table 1 · Final score and normalized AUC metrics (×100)</caption><thead><tr><th scope="col">Method</th><th scope="col">TB2 Final</th><th scope="col">TB3 Final</th><th scope="col">LHTB Final</th><th scope="col">Overall Final</th><th scope="col">Step-AUC</th><th scope="col">Time-AUC</th></tr></thead><tbody id="full-results"></tbody></table></div><p class="source-note left">SC: Structured Continuation. WM: WM Grounding. Step-AUC and Time-AUC summarize progress over step and time budgets; higher is better.</p></details>
+    </section>
+
+    <section class="distillation-section">
+      <div class="section-shell distillation-grid">
+        <div><p class="eyebrow">04 / DISTILLING THE REASONING</p><h2>A smaller model.<br> A cumulative recovery loop.</h2><p class="section-intro">Transfer four recurring world-model roles to Qwen3.5-9B with SFT, then refine the student on states it visits through on-policy distillation.</p><div class="role-list"><span>Probe generation</span><span>Evidence judgment</span><span>Frontier relations</span><span>Task-clause assessment</span></div><p class="small-prose">The controller, executor, and belief-update rules stay the same. SFT + OPD + Gen also uses a separate student adapter for hypothesis generation. Prospective evaluation remains teacher-based.</p></div>
+        <div class="cost-panel"><div class="cost-title"><h3>Teacher API cost</h3><span>Estimated $ / task ↓</span></div><div class="cost-row"><div><strong>BeliefWeaver teacher</strong><span>$0.550 <small>± 0.145</small></span></div><div class="cost-track"><i style="width:100%"></i></div></div><div class="cost-row student-cost"><div><strong>SFT + OPD</strong><span>$0.248 <small>± 0.052</small></span></div><div class="cost-track"><i style="width:45.1%"></i></div><p>54.8% lower teacher API cost</p></div><div class="cost-row student-cost"><div><strong>SFT + OPD + Gen</strong><span>$0.100 <small>± 0.023</small></span></div><div class="cost-track"><i style="width:18.2%"></i></div><p>81.9% lower teacher API cost</p></div><p class="cost-note">Paper-reported savings vs. the matched teacher. Excludes executor, student-serving, and training costs. Accounting rates: $1 / $4 per million input / output tokens. <a href="https://arxiv.org/html/2610.18082v1#S5.T4" target="_blank" rel="noopener">Table 4 ↗</a></p></div>
+      </div>
+    </section>
+
+    <section class="section-shell resources-section" id="resources">
+      <div class="section-heading"><div><p class="eyebrow">05 / EXPLORE FURTHER</p><h2>Read it. Run it. Build on it.</h2></div></div>
+      <div class="resource-grid"><a class="resource-card" href="https://arxiv.org/pdf/2610.18082" target="_blank" rel="noopener"><span class="resource-number">01 <span>↗</span></span><h3>The paper</h3><p>Method, experimental setup, ablations, and limitations.</p><span class="card-link">arXiv:2610.18082</span></a><a class="resource-card" href="https://github.com/wuxiyang1996/beliefweaver" target="_blank" rel="noopener"><span class="resource-number">02 <span>↗</span></span><h3>The code</h3><p>Installation, method configurations, evaluation, and training.</p><span class="card-link">GitHub · Private repository</span></a><a class="resource-card" href="assets/beliefweaver-short.mp4" download><span class="resource-number">03 <span>↓</span></span><h3>The short video</h3><p>A narrated visual introduction to the recovery loop and results.</p><span class="card-link">Download MP4</span></a></div>
+      <div class="limits-note"><strong>Scope &amp; limitations</strong><p>Evaluated on terminal benchmarks with verifier feedback and checkpoint restoration. Incorrect world-model predictions can still misrank repairs; transfer to environments with sparse feedback or unreliable rollback remains an open question.</p></div>
+      <div class="citation-block"><div><h3>Citation</h3><button class="copy-button" id="copy-citation" type="button">Copy BibTeX</button></div><pre id="citation">@misc{wu2026failure,
+  title={Failure Recovery via Belief Updates and World Modeling for Long-Horizon Agents},
+  author={Xiyang Wu and Zhichao Liu and Shengxin Zhang and Zongxia Li and Ming Li and Tianyi Zhou and Dinesh Manocha},
+  year={2026},
+  eprint={2610.18082},
+  archivePrefix={arXiv},
+  primaryClass={cs.LG},
+  url={https://arxiv.org/abs/2610.18082}
+}</pre><p id="copy-status" class="copy-status" role="status"></p></div>
+    </section>
+  </main>
+  <footer class="site-footer section-shell"><a class="wordmark" href="#top"><img src="assets/mark.svg" alt="" width="24" height="24">BeliefWeaver</a><p>Research project · October 2026<br> <span>Page structure inspired by <a href="https://wuxiyang1996.github.io/SABER_page/" target="_blank" rel="noopener">SABER</a>. Original page design and animations.</span></p><a href="#top" class="back-top">Back to top ↑</a></footer>
+</body>
+</html>

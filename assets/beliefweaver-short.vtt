@@ -1,0 +1,53 @@
+WEBVTT
+
+1
+00:00:00.400 --> 00:00:04.679
+An agent can fail, roll back, and repeat the same mistake.
+
+2
+00:00:04.799 --> 00:00:08.163
+BeliefWeaver turns recovery into cumulative reasoning.
+
+3
+00:00:08.783 --> 00:00:15.476
+It keeps a relational belief state: repair hypotheses, attempts, observations, and checkpoints.
+
+4
+00:00:15.596 --> 00:00:19.680
+That evidence persists across attempts, including rollbacks.
+
+5
+00:00:20.300 --> 00:00:24.028
+An implicit world model evaluates repair hypotheses.
+
+6
+00:00:24.148 --> 00:00:26.952
+A diagnostic gate controls execution.
+
+7
+00:00:27.072 --> 00:00:31.531
+New evidence updates belief, so the next attempt starts better informed.
+
+8
+00:00:32.151 --> 00:00:36.615
+The paper distills four recurring roles into a 9B student.
+
+9
+00:00:36.735 --> 00:00:41.333
+Supervised fine-tuning is followed by on-policy distillation.
+
+10
+00:00:41.953 --> 00:00:49.341
+On 113 tasks: Terminus-2 reaches a 48.6% final score.
+
+11
+00:00:49.461 --> 00:00:55.269
+BeliefWeaver reaches 53.7%; SFT + OPD reaches 58.4%.
+
+12
+00:00:55.889 --> 00:00:58.883
+Recovery improves when evidence survives failure.
+
+13
+00:00:59.003 --> 00:01:02.002
+Explore BeliefWeaver and read the paper.
