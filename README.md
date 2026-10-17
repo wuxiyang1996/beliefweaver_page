@@ -18,7 +18,7 @@ GitHub Pages serves the root of `main`, matching the deployment structure of [SA
 - `assets/`: method figure, short MP4, English captions, and video poster.
 - `media-source/`: editable narration and reproducible video scripts; see its [README](media-source/README.md).
 
-The experimental code lives separately in [beliefweaver](https://github.com/wuxiyang1996/beliefweaver), currently private. Its link is labeled accordingly on the page.
+The code, data, and model are not yet public; the page labels them "Coming soon".
 
 ## Attribution
 

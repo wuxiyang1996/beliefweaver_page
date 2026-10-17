@@ -34,7 +34,9 @@
       <div class="resource-links">
         <a class="button primary" href="https://arxiv.org/pdf/2610.18082" target="_blank" rel="noopener">Read the paper <span aria-hidden="true">↗</span></a>
         <a class="button" href="https://arxiv.org/abs/2610.18082" target="_blank" rel="noopener">arXiv</a>
-        <a class="button" href="https://github.com/wuxiyang1996/beliefweaver" target="_blank" rel="noopener">Code <span class="button-note">Private</span><span aria-hidden="true">↗</span></a>
+        <span class="button is-soon" aria-disabled="true">Code <span class="button-note">Coming soon</span></span>
+        <span class="button is-soon" aria-disabled="true">Data <span class="button-note">Coming soon</span></span>
+        <span class="button is-soon" aria-disabled="true">Model <span class="button-note">Coming soon</span></span>
         <a class="button" href="#video"><span class="play-icon" aria-hidden="true">▶</span> Watch overview</a>
       </div>
       <div class="hero-visual" aria-label="Conceptual illustration: failed attempts contribute evidence to a persistent belief state that guides the next repair.">
@@ -134,7 +136,7 @@
 
     <section class="section-shell resources-section" id="resources">
       <div class="section-heading"><div><p class="eyebrow">05 / EXPLORE FURTHER</p><h2>Read it. Run it. Build on it.</h2></div></div>
-      <div class="resource-grid"><a class="resource-card" href="https://arxiv.org/pdf/2610.18082" target="_blank" rel="noopener"><span class="resource-number">01 <span>↗</span></span><h3>The paper</h3><p>Method, experimental setup, ablations, and limitations.</p><span class="card-link">arXiv:2610.18082</span></a><a class="resource-card" href="https://github.com/wuxiyang1996/beliefweaver" target="_blank" rel="noopener"><span class="resource-number">02 <span>↗</span></span><h3>The code</h3><p>Installation, method configurations, evaluation, and training.</p><span class="card-link">GitHub · Private repository</span></a><a class="resource-card" href="assets/beliefweaver-short.mp4" download><span class="resource-number">03 <span>↓</span></span><h3>The short video</h3><p>A narrated visual introduction to the recovery loop and results.</p><span class="card-link">Download MP4</span></a></div>
+      <div class="resource-grid"><a class="resource-card" href="https://arxiv.org/pdf/2610.18082" target="_blank" rel="noopener"><span class="resource-number">01 <span>↗</span></span><h3>The paper</h3><p>Method, experimental setup, ablations, and limitations.</p><span class="card-link">arXiv:2610.18082</span></a><div class="resource-card is-soon"><span class="resource-number">02</span><h3>Code, data &amp; model</h3><p>Method configurations, evaluation and training code, distillation data, and the 9B student.</p><span class="card-link">Coming soon</span></div><a class="resource-card" href="assets/beliefweaver-short.mp4" download><span class="resource-number">03 <span>↓</span></span><h3>The short video</h3><p>A narrated visual introduction to the recovery loop and results.</p><span class="card-link">Download MP4</span></a></div>
       <div class="limits-note"><strong>Scope &amp; limitations</strong><p>Evaluated on terminal benchmarks with verifier feedback and checkpoint restoration. Incorrect world-model predictions can still misrank repairs; transfer to environments with sparse feedback or unreliable rollback remains an open question.</p></div>
       <div class="citation-block"><div><h3>Citation</h3><button class="copy-button" id="copy-citation" type="button">Copy BibTeX</button></div><pre id="citation">@misc{wu2026failure,
   title={Failure Recovery via Belief Updates and World Modeling for Long-Horizon Agents},
